@@ -12,7 +12,7 @@ public class module extends JPanel implements ActionListener {
     private boolean inGame = false;
     private boolean muerto = false;
     //variables para mover a los enemigos
-    private int N_G = 4;
+    private int N_G = 4;//numero de enemigos al inicio
     private int lives, score;
     private int[] dx, dy;
     private int[] g_x, g_y, g_dx, g_dy, gSpeed;
@@ -62,7 +62,6 @@ public class module extends JPanel implements ActionListener {
     private Timer timer;
 
     public module() {
-
         loadImages();
         initVariables();
         addKeyListener(new TAdapter());
@@ -112,11 +111,9 @@ public class module extends JPanel implements ActionListener {
     }
 
     private void showIntroScreen(Graphics2D g2d) {
-
         String start = "Presione ESPACIO para empezar!";
         g2d.setColor(Color.yellow);
         g2d.drawString(start, (SCREEN)/4 - 30, 150);
-
     }
 
     private void checkWin(Graphics2D g2d){
@@ -263,7 +260,6 @@ public class module extends JPanel implements ActionListener {
         if (pacman_x % CASILLA == 0 && pacman_y % CASILLA == 0) {
             pos = pacman_x / CASILLA + N_CASILLAS * (int) (pacman_y / CASILLA);
             ch = screenData[pos];
-            System.out.println(ch);
             if ((ch & 16) != 0) {
                 screenData[pos] = (short) (ch & 15);
                 score++;
@@ -367,9 +363,6 @@ public class module extends JPanel implements ActionListener {
         continueJugar();
     }
 
-
-
-
     private void continueJugar() {
 
         int dx = 1;
@@ -399,6 +392,7 @@ public class module extends JPanel implements ActionListener {
         req_dy = 0;
         muerto = false;
     }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
