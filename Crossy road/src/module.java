@@ -195,7 +195,6 @@ public class module extends JPanel implements ActionListener {
                 if ((levelData[i] == 2) || levelData[i] == 1) {
                     g2d.fillRect(x, y, CASILLA, CASILLA);
                 }
-
                 if ((screenData[i] == 3)) {
                     g2d.setColor(new Color(255,255,255));
                     g2d.drawLine(x, y, x+8 , y );
@@ -279,6 +278,7 @@ public class module extends JPanel implements ActionListener {
 
             if (inGame) {
                 if (key == KeyEvent.VK_A) {
+
                     req_dx = -1;
                     req_dy = 0;
                 } else if (key == KeyEvent.VK_D) {
