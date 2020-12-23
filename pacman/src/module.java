@@ -275,7 +275,7 @@ public class module extends JPanel implements ActionListener {
                 }
             }
 
-            // Check for standstill
+            // si sigue en la misma posicion
             if ((pacmand_x == -1 && pacmand_y == 0 && (ch & 1) != 0)
                     || (pacmand_x == 1 && pacmand_y == 0 && (ch & 4) != 0)
                     || (pacmand_x == 0 && pacmand_y == -1 && (ch & 2) != 0)
@@ -289,7 +289,6 @@ public class module extends JPanel implements ActionListener {
     }
 
     private void drawPacman(Graphics2D g2d) {
-
         if (req_dx == -1) {
             g2d.drawImage(left, pacman_x + 1, pacman_y + 1, this);
         } else if (req_dx == 1) {
@@ -345,7 +344,6 @@ public class module extends JPanel implements ActionListener {
     }
 
     private void initGame() {
-
         lives = 3;
         score = 0;
         initTablero();

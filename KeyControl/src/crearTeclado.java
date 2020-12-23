@@ -12,51 +12,65 @@ import java.util.Arrays;
 
 
 public class crearTeclado extends JPanel implements ActionListener {
-    private final short crossy[] = {
-            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-            2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
-    };
-
     public crearTeclado(){
         addKeyListener(new TAdapter());
         setFocusable(true);
     }
 
     class TAdapter extends KeyAdapter {
-
+        String juegoActual = "INICIO";
         @Override
         public void keyPressed(KeyEvent e) {
-            String juegoActual = "INICIO";
+
             int key = e.getKeyCode();
+            System.out.println(key - '0');
             if (juegoActual == "INICIO") {
                 if (key == KeyEvent.VK_1) {
                     juegoActual = "CROSSY";
                     try {
-                        Socket tablero = new Socket("192.168.56.1", 9999);
+                        Socket tablero = new Socket("192.168.56.1", 9995);
 
                         DataOutputStream output = new DataOutputStream(tablero.getOutputStream());
 
-                        output.writeUTF(Arrays.toString(crossy));
+                        output.writeUTF("CROSS");
 
                         output.close();
 
-                    }catch (IOException ioException) {
+                    } catch (IOException ioException) {
                         System.out.println(ioException.getMessage());
                     }
+                } else if (key == KeyEvent.VK_2) {
+                    juegoActual = "PACMAN";
+                    try {
+                        Socket tablero = new Socket("192.168.56.1", 9995);
+
+                        DataOutputStream output = new DataOutputStream(tablero.getOutputStream());
+
+                        output.writeUTF("PAC");
+
+                        output.close();
+
+                    } catch (IOException ioException) {
+                        System.out.println(ioException.getMessage());
+                    }
+                } else if (key == KeyEvent.VK_3){
+                    try {
+                        Socket tablero = new Socket("192.168.56.1", 9995);
+
+                        DataOutputStream output = new DataOutputStream(tablero.getOutputStream());
+
+                        output.writeUTF("EXIT");
+
+                        output.close();
+
+                    } catch (IOException ioException) {
+                        System.out.println(ioException.getMessage());
+                    }
+                    System.exit(0);
                 }
+            }
+            if (juegoActual == "PACMAN"){
+
             }
         }
     }

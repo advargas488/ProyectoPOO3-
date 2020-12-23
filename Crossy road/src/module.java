@@ -212,7 +212,6 @@ public class module extends JPanel implements ActionListener {
     }
 
     private void initTablero() {
-
         int i;
         for (i = 0; i < N_CASILLAS * N_CASILLAS; i++) {
             screenData[i] = levelData[i];
@@ -273,7 +272,6 @@ public class module extends JPanel implements ActionListener {
 
         @Override
         public void keyPressed(KeyEvent e) {
-
             int key = e.getKeyCode();
 
             if (inGame) {

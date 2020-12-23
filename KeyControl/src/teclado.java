@@ -7,5 +7,6 @@ public class teclado extends JFrame {
     public static void main(String[] args) {
         teclado one = new teclado();
         one.setVisible(true);
+        one.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }
