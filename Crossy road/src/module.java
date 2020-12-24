@@ -42,7 +42,7 @@ public class module extends JPanel implements ActionListener {
             2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
             2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
     };
-
+    //velocidad de los carros
     private final int[] validSpeeds = {1, 2, 3, 4, 6, 8};
     private final int maxSpeed = 6;
 
@@ -51,15 +51,14 @@ public class module extends JPanel implements ActionListener {
     private Timer timer;
 
     public module() {
-        loadImages();
-        initVariables();
-        addKeyListener(new TAdapter());
+        loadImages();// cargan imagenes
+        initVariables();//se inician las variables
+        addKeyListener(new TAdapter());//se agrega un teclado
         setFocusable(true);
-        initGame();
+        initGame();//inicio del juego
     }
 
     private void checkGame(Graphics2D g2d){
-
         if(frog_y == 1){
             String win = "Has ganado!";
             g2d.setColor(Color.yellow);
@@ -240,11 +239,11 @@ public class module extends JPanel implements ActionListener {
             cSpeed[i] = validSpeeds[random];
         }
 
-        frog_x = 8 * CASILLA;  //start position
+        frog_x = 8 * CASILLA;  //posicion inicial
         frog_y = 14 * CASILLA;
-        frog_dx = 0;	//reset direction move
+        frog_dx = 0;	//se resetean las direcciones
         frog_dy = 0;
-        req_dx = 0;		// reset direction controls
+        req_dx = 0;
         req_dy = 0;
         muerto = false;
 

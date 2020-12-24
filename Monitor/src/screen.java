@@ -270,11 +270,11 @@ public class screen extends JPanel implements Runnable, ActionListener {
             cSpeed[i] = validSpeeds[random];
         }
 
-        frog_x = 8 * CASILLA;  //start position
+        frog_x = 8 * CASILLA;  //posicion inicial
         frog_y = 14 * CASILLA;
-        frog_dx = 0;	//reset direction move
+        frog_dx = 0;//se resetean las direcciones
         frog_dy = 0;
-        req_dx = 0;		// reset direction controls
+        req_dx = 0;
         req_dy = 0;
         muertoC = false;
         continua();
@@ -589,11 +589,11 @@ public class screen extends JPanel implements Runnable, ActionListener {
             gSpeed[i] = validSpeeds[random];
         }
 
-        pacman_x = 7 * CASILLA;  //start position
+        pacman_x = 7 * CASILLA;  //posicion inicial
         pacman_y = 11 * CASILLA;
-        pacmand_x = 0;	//reset direction move
+        pacmand_x = 0;
         pacmand_y = 0;
-        req_dx = 0;		// reset direction controls
+        req_dx = 0;		//se resetean las posiciones
         req_dy = 0;
         muerto = false;
         continua();

@@ -382,11 +382,11 @@ public class module extends JPanel implements ActionListener {
             gSpeed[i] = validSpeeds[random];
         }
 
-        pacman_x = 7 * CASILLA;  //start position
+        pacman_x = 7 * CASILLA;  //posicion inicial
         pacman_y = 11 * CASILLA;
-        pacmand_x = 0;	//reset direction move
+        pacmand_x = 0;	//se resetean las direcciones
         pacmand_y = 0;
-        req_dx = 0;		// reset direction controls
+        req_dx = 0;
         req_dy = 0;
         muerto = false;
     }
