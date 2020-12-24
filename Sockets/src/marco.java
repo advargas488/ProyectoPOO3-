@@ -17,7 +17,6 @@ public class marco extends JFrame implements Runnable {
 
     @Override
     public void run() {
-        //System.out.println("I am listening");
 
         try {
             ServerSocket server1 = new ServerSocket(9995);
@@ -44,10 +43,24 @@ public class marco extends JFrame implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         try {
-            ServerSocket server2 = new ServerSocket(9991);
+            Socket moverP = new Socket("192.168.56.1",2000);
 
+            DataOutputStream output = new DataOutputStream(moverP.getOutputStream());
+
+            ServerSocket server2 = new ServerSocket(9992);
+
+            Socket mov = server2.accept();
+
+            DataInputStream input = new DataInputStream(mov.getInputStream());
+
+            String respuesta = input.readUTF();
+
+            input.close();
+
+            output.writeUTF(respuesta);
+
+            output.close();
 
         } catch (IOException e) {
             e.printStackTrace();

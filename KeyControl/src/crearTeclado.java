@@ -69,8 +69,99 @@ public class crearTeclado extends JPanel implements ActionListener {
                     System.exit(0);
                 }
             }
-            if (juegoActual == "PACMAN"){
+            if (juegoActual == "PACMAN" || juegoActual == "CROSS"){
+                if(key == KeyEvent.VK_W){
+                    Socket mov = null;
+                    try {
+                        mov = new Socket("192.168.56.1", 9992);
 
+                        DataOutputStream output = new DataOutputStream(mov.getOutputStream());
+
+                        output.writeUTF("UP");
+
+                        output.close();
+
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+
+                }
+                else if(key == KeyEvent.VK_A) {
+                    Socket mov = null;
+                    try {
+                        mov = new Socket("192.168.56.1", 9992);
+
+                        DataOutputStream output = new DataOutputStream(mov.getOutputStream());
+
+                        output.writeUTF("LEFT");
+
+                        output.close();
+
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
+                else if(key == KeyEvent.VK_S) {
+                    Socket mov = null;
+                    try {
+                        mov = new Socket("192.168.56.1", 9992);
+
+                        DataOutputStream output = new DataOutputStream(mov.getOutputStream());
+
+                        output.writeUTF("DOWN");
+
+                        output.close();
+
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
+                else if(key == KeyEvent.VK_D) {
+                    Socket mov = null;
+                    try {
+                        mov = new Socket("192.168.56.1", 9992);
+
+                        DataOutputStream output = new DataOutputStream(mov.getOutputStream());
+
+                        output.writeUTF("RIGHT");
+
+                        output.close();
+
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
+                else if(key == KeyEvent.VK_ESCAPE) {
+                    Socket mov = null;
+                    try {
+                        mov = new Socket("192.168.56.1", 9992);
+
+                        DataOutputStream output = new DataOutputStream(mov.getOutputStream());
+
+                        output.writeUTF("BACK");
+
+                        output.close();
+
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    juegoActual = "INICIO";
+                }
+                else if(key == KeyEvent.VK_SPACE){
+                    Socket mov = null;
+                    try {
+                        mov = new Socket("192.168.56.1", 9992);
+
+                        DataOutputStream output = new DataOutputStream(mov.getOutputStream());
+
+                        output.writeUTF("INICIAR");
+
+                        output.close();
+
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
             }
         }
     }
