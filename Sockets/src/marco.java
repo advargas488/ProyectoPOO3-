@@ -8,62 +8,62 @@ import java.net.Socket;
 
 public class marco extends JFrame implements Runnable {
     public marco() {
-        setVisible(true);
+        setVisible(true); // Hago visible el marco 
 
-        Thread mihilo = new Thread(this);
+        Thread mihilo = new Thread(this); // Nuevo hilo
 
-        mihilo.start();
+        mihilo.start(); // Inicializo el hilo 
     }
 
     @Override
     public void run() {
 
         try {
-            ServerSocket server1 = new ServerSocket(9995);
+            ServerSocket server1 = new ServerSocket(9995); // Creo el server1 el cual corresponde al socket con puerto 9995
 
-            Socket tablero = server1.accept();
+            Socket tablero = server1.accept(); // Tablero de tipo socket pasa a guardar la respuesta aceptada 
 
-            DataInputStream input = new DataInputStream(tablero.getInputStream());
+            DataInputStream input = new DataInputStream(tablero.getInputStream()); // Se guarda en input el stream ingresado
 
             String salida = input.readUTF();
 
-            input.close();
+            input.close(); // Cierro la conexion 
 
-            Socket new_tablero = new Socket("192.168.56.1",9990);
+            Socket new_tablero = new Socket("192.168.56.1",9990); // Establezco un nuevo socket con la direccion ip de la computadora y el puerto
 
-            DataOutputStream output = new DataOutputStream(new_tablero.getOutputStream());
+            DataOutputStream output = new DataOutputStream(new_tablero.getOutputStream());// Se guarda en output el stream a mandar por medio del socket
 
-            output.writeUTF(salida);
+            output.writeUTF(salida); // escribo en output el string salida 
 
             if(salida.equals("EXIT")){
-                System.exit(0);
+                System.exit(0); // Si salida corresponde a exit cierro las conexiones y termina de ejecutarse
             }
-            output.close();
+            output.close(); // Cierro la conexion
 
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // En caso de tener algun error presente en la conexion
         }
         try {
-            Socket moverP = new Socket("192.168.56.1",2000);
+            Socket moverP = new Socket("192.168.56.1",2000); // Se genera un nuevo socket con la direccion ip de la computadora y el puerto para transmitir el movimiento a ejecutar, 
 
-            DataOutputStream output = new DataOutputStream(moverP.getOutputStream());
+            DataOutputStream output = new DataOutputStream(moverP.getOutputStream()); // Se guarda en output el stream a mandar por medio del socket este indica el movimiento
 
-            ServerSocket server2 = new ServerSocket(9992);
+            ServerSocket server2 = new ServerSocket(9992); //// Creo el server1 el cual corresponde al socket con puerto 9992
 
-            Socket mov = server2.accept();
+            Socket mov = server2.accept(); // Acepta la conexion
 
-            DataInputStream input = new DataInputStream(mov.getInputStream());
+            DataInputStream input = new DataInputStream(mov.getInputStream()); // Se guarda en input el stream ingresado
 
-            String respuesta = input.readUTF();
+            String respuesta = input.readUTF();  
 
-            input.close();
+            input.close(); // Cierro la conexion
 
-            output.writeUTF(respuesta);
+            output.writeUTF(respuesta); // Escribo la respuesta en el output
 
-            output.close();
+            output.close(); // Cierro la conexion
 
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();  // En caso de tener algun error presente en la conexion
         }
 
     }
